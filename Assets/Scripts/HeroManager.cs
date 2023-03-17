@@ -22,9 +22,9 @@ public class HeroManager : Singleton<HeroManager>
         {
             if (horizontalInput > 0)
             {
-                TryStep(Direction.North);
+                TryStep(Direction.East);
             }
-            else { TryStep(Direction.South); }
+            else { TryStep(Direction.West); }
         }
         int VertInput = (int)Input.GetAxisRaw("Vertical");
 
@@ -32,9 +32,9 @@ public class HeroManager : Singleton<HeroManager>
         {
             if (VertInput > 0)
             {
-                TryStep(Direction.East);
+                TryStep(Direction.North);
             }
-            else { TryStep(Direction.West); }
+            else { TryStep(Direction.South); }
         }
 
     }
@@ -85,14 +85,28 @@ public class HeroManager : Singleton<HeroManager>
         //nope try again silly boy
     }
 
+    bool inMotion = false;
+    IEnumerator Move(Action action)
+    {
+        BugInstance.GetComponent<BugBehaviour>().MoveFoward.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_DestinationTransform>().Destination = action.InteractionTile?.transform;
+        inMotion = true;
+        yield return BugInstance.GetComponent<BugBehaviour>().MoveFoward.PlayFeedbacksCoroutine(this.transform.position, 1, false);
+
+        inMotion = false;
+        CurrentTile = action.InteractionTile;
+        //set new step
+
+        yield break;
+    }
+
     private void Step(Action action)
     {
         //get tile type in direstion and 
         switch (action.SetAction)
         {
             case Action.ActionType.Move:
-                BugInstance.GetComponent<BugBehaviour>().MoveFoward.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_DestinationTransform>().Destination = action.InteractionTile?.transform;
-                BugInstance.GetComponent<BugBehaviour>().MoveFoward.PlayFeedbacks();
+                if(!inMotion)
+                StartCoroutine(Move(action));   
                 break;
             case Action.ActionType.Turn:
                 break;
