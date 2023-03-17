@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 242814415334367907}
   - component: {fileID: 4250035905707418535}
   - component: {fileID: 3173264154549067718}
+  - component: {fileID: 7548499875686261769}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4354001410666814413, guid: c996340c4fd8346478a3f5ff9ad78fb2, type: 3}
+  - {fileID: 2100000, guid: 475af49ebb75563439bb5b5fda766b86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,10 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMoveTo: 1
-  North: {fileID: 0}
-  East: {fileID: 0}
-  South: {fileID: 0}
-  West: {fileID: 0}
 --- !u!65 &3173264154549067718
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,3 +112,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.22829634, z: 1}
   m_Center: {x: 0, y: 0.000000011175871, z: 0}
+--- !u!114 &7548499875686261769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755939983894954870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0.4245283, g: 0.2723947, b: 0.16286932, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
