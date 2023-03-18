@@ -7,7 +7,7 @@ using DragAndDrop;
 
 public class CharmsArrayUI : ObjectContainerArray
 {
-
+    public HeroManager HeroManager;
     // where the data comes from - this represents the player, and either their backpack or belt
     public bool BeEmpty = false;
     public GameObject StartButton;
@@ -27,6 +27,19 @@ public class CharmsArrayUI : ObjectContainerArray
         {
             CreateSlots(new Charm[player.GetCharms(charmList).Length]);
         }
+    }
+
+    public void SendSelectedBugs()
+    {
+        List<Charm> bugs = new List<Charm>();
+            foreach (Transform child in transform)
+            {
+                if (child != null && child.childCount > 0)
+                {
+                bugs.Add(child.GetChild(0).GetComponent<CharmUI>().obj as Charm);                    
+                }
+            }
+        HeroManager.StartGame(bugs.ToArray());
     }
 
     bool amFull = false;

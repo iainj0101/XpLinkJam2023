@@ -17,6 +17,7 @@ public class Charm : ScriptableObject {
         All = 127 // combination of all types
     }
 
+    public HeroManager.Bug BugType;
     public CharmType charmType = CharmType.Potion;
     public Color color;
     public float level;

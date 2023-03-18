@@ -14,6 +14,7 @@ public class HeroManager : GameEventListener
     public GameObject EastButton;
     public GameObject SouthButton;
     public GameObject WestButton;
+    public GameObject NextBugButton;
     public enum Bug { Ant, Hopper, Caterpillar }
     public Bug CurrentBug = Bug.Hopper;
     public List<Bug> Bugs = new List<Bug>();
@@ -25,8 +26,13 @@ public class HeroManager : GameEventListener
     [SerializeField] GameObject HopperPrefab;
     [SerializeField] GameObject CaterpillarPrefab;
 
-    private void Start()
+    public void StartGame(Charm[] UsedBugs)
     {
+        foreach (Charm bug in UsedBugs)
+        {
+            Bugs.Add(bug.BugType);
+        }
+        SwapBug(Bugs[0]);
         PossibleActions = GetPossibleActions();
         UpdateButtonUI();
         Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance?.transform);
@@ -101,6 +107,18 @@ public class HeroManager : GameEventListener
         
     }
 
+    public void NextBug()
+    {
+        if (Bugs.Count > 1)
+        {
+            Bugs.Remove(Bugs[0]);
+            SwapBug(Bugs[0]);
+        }
+        else
+        {
+            //die
+        }
+    }
     public void SwapBug(Bug bug)
     {
         CurrentBug = bug;
@@ -108,7 +126,7 @@ public class HeroManager : GameEventListener
         {
             case Bug.Ant:
                 Destroy(BugInstance);
-                BugInstance = Instantiate(AntPrefab, this.transform);
+                BugInstance = Instantiate(AntPrefab, CurrentTile.transform.position,this.transform.rotation,this.transform);
                 break;
             case Bug.Hopper:
                 break;
@@ -239,7 +257,7 @@ public class HeroManager : GameEventListener
         CurrentDirection = action.Direction;
         CurrentTile = action.InteractionTile;
 
-        SwapBug(Bug.Ant);
+        NextBug();
 
         StepEvent.CurrentTile = CurrentTile;
         StepEvent.Raise();
