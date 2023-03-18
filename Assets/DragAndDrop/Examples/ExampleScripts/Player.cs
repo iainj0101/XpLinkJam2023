@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     public void LoadPlayer(CharmList level)
     {
-        LevelBugs.charmList = level;
+        LevelBugs.charmList =  level;
         UseBugs.charmList = level;
         LevelBugs.Load();
         UseBugs.Load();

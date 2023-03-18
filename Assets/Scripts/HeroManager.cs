@@ -41,6 +41,10 @@ public class HeroManager : GameEventListener
     {
         PossibleActions = GetPossibleActions();
         UpdateButtonUI();
+        if (CurrentTile.GetComponent<EndTile>() != null)
+        {
+            CurrentTile.GetComponent<EndTile>().Win();
+        }
     }
 
     private void UpdateButtonUI()
@@ -159,6 +163,7 @@ public class HeroManager : GameEventListener
         }
 
         Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance.transform);
+        Camera.main.GetComponent<MoreMountains.Tools.MMOrbitalCamera>().Target = BugInstance.transform;
     }
 
     private Direction[] GetRightLeft()

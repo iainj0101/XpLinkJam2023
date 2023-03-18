@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMoveTo: 1
+  IsEndTile: 0
 --- !u!65 &3173264154549067718
 BoxCollider:
   m_ObjectHideFlags: 0
