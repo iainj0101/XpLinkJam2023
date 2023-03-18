@@ -189,12 +189,14 @@ public class HeroManager : GameEventListener
         rightLeft[1] = directionLeft;
         return rightLeft;
     }
-
+    bool SecondTurn = false;
+    bool fix2 = false;
+    Action.TurnDirection lastTurn = Action.TurnDirection.Dont;
+    Action.TurnDirection lastLastTurn = Action.TurnDirection.Dont;
     private List<Action> GetPossibleActions()
     {
         List<Action> actions = new List<Action>();
         BugBehaviour bb = BugInstance.GetComponent<BugBehaviour>();
-
         switch (CurrentBug)
         {
             case (Bug.Ant):
@@ -237,6 +239,9 @@ public class HeroManager : GameEventListener
                 actions.Add(Left);
                 break;
             case (Bug.Caterpillar):
+                Debug.Log(lastTurn + " Last");
+                Debug.Log(lastLastTurn + " LastLast");
+                Debug.Log("-");
                 foreach (KeyValuePair<Direction, Tile> key in CurrentTile.Tiles)
                 {
                     if (key.Key == CurrentDirection)
@@ -249,27 +254,77 @@ public class HeroManager : GameEventListener
                             firstcati.Direction = CurrentDirection;
                             firstcati.InteractionTile = key.Value;
                             firstcati.Turn = Action.TurnDirection.Dont;
-                            firstcati.CatiFirst = Action.TurnDirection.Dont;
+                            firstcati.LastTurn = Action.TurnDirection.Dont;
+                            firstcati.LastLastTurn = Action.TurnDirection.Dont;
                             actions.Add(firstcati);
+                            SecondTurn = true;
                         }
                         else
-                        {
-                            bool left1 = bb?.CatiIndex == 1 && bb?.CatiPrevMove == 0;
+                        {/*
+                            bool left1 = bb?.CatiIndex == 1 && bb?.CatiPrevMove == 1;
                             bool left2 = bb?.CatiIndex == 0 && bb?.CatiPrevMove == 1;
 
-                            bool Right1 = bb?.CatiIndex == 1 && bb?.CatiPrevMove == 1;
+                            bool Right1 = bb?.CatiIndex == 1 && bb?.CatiPrevMove == 0;
                             bool Right2 = bb?.CatiIndex == 0 && bb?.CatiPrevMove == 0;
-
-                            if (bb?.CatiIndex == 0) {
-                                bb.CatiIndex = 1;
-                            }
-                            else if (bb?.CatiIndex == 1) { bb.CatiIndex = 0; }
-
+                            */
                             Direction[] rightLeft3 = GetRightLeft();
                             Direction directionRight3 = rightLeft3[0];
                             Direction directionLeft3 = rightLeft3[1];
-
-                            if (left1 || left2)
+                            SecondTurn = false;
+                            if (lastTurn != lastLastTurn && lastLastTurn == Action.TurnDirection.Dont)
+                            {
+                                if (lastTurn == Action.TurnDirection.Right)
+                                {
+                                    Action Left3 = new Action();
+                                    Left3.SetAction = Action.ActionType.MoveAndTurn;
+                                    Left3.Direction = CurrentDirection;
+                                    Left3.Facing = directionLeft3;
+                                    Left3.InteractionTile = key.Value;
+                                    Left3.Turn = Action.TurnDirection.Left;
+                                    Left3.LastLastTurn = Action.TurnDirection.Left;
+                                    Left3.LastTurn = Action.TurnDirection.Left;
+                                    actions.Add(Left3);
+                                }
+                                else if (lastTurn == Action.TurnDirection.Left)
+                                {
+                                    Action Right3 = new Action();
+                                    Right3.SetAction = Action.ActionType.MoveAndTurn;
+                                    Right3.Direction = CurrentDirection;
+                                    Right3.Facing = directionRight3;
+                                    Right3.InteractionTile = key.Value;
+                                    Right3.Turn = Action.TurnDirection.Right;
+                                    Right3.LastLastTurn = Action.TurnDirection.Right;
+                                    Right3.LastTurn = Action.TurnDirection.Right;
+                                    actions.Add(Right3);
+                                }
+                            }
+                            if (lastTurn == lastLastTurn)
+                            {
+                                if (lastLastTurn == Action.TurnDirection.Right)
+                                {
+                                    Action Left3 = new Action();
+                                    Left3.SetAction = Action.ActionType.MoveAndTurn;
+                                    Left3.Direction = CurrentDirection;
+                                    Left3.Facing = directionLeft3;
+                                    Left3.InteractionTile = key.Value;
+                                    Left3.Turn = Action.TurnDirection.Left;
+                                    Left3.LastLastTurn = lastLastTurn;
+                                    Left3.LastTurn = lastTurn;
+                                    actions.Add(Left3);
+                                }else if (lastLastTurn == Action.TurnDirection.Left)
+                                {
+                                    Action Right3 = new Action();
+                                    Right3.SetAction = Action.ActionType.MoveAndTurn;
+                                    Right3.Direction = CurrentDirection;
+                                    Right3.Facing = directionRight3;
+                                    Right3.InteractionTile = key.Value;
+                                    Right3.Turn = Action.TurnDirection.Right;
+                                    Right3.LastLastTurn = lastLastTurn;
+                                    Right3.LastTurn = lastTurn;
+                                    actions.Add(Right3);
+                                }
+                            }
+                            else if (lastTurn == Action.TurnDirection.Left)
                             {
                                 Action Left3 = new Action();
                                 Left3.SetAction = Action.ActionType.MoveAndTurn;
@@ -277,24 +332,31 @@ public class HeroManager : GameEventListener
                                 Left3.Facing = directionLeft3;
                                 Left3.InteractionTile = key.Value;
                                 Left3.Turn = Action.TurnDirection.Left;
-                                Left3.CatiFirst =  (Action.TurnDirection)bb.CatiFirstMove;
+                                Left3.LastLastTurn = lastLastTurn;
+                                Left3.LastTurn = lastTurn;
                                 actions.Add(Left3);
                             }
-                            else if(Right1 || Right2) {
+                            else if (lastTurn == Action.TurnDirection.Right)
+                            {
                                 Action Right3 = new Action();
                                 Right3.SetAction = Action.ActionType.MoveAndTurn;
                                 Right3.Direction = CurrentDirection;
                                 Right3.Facing = directionRight3;
                                 Right3.InteractionTile = key.Value;
                                 Right3.Turn = Action.TurnDirection.Right;
-                                Right3.CatiFirst = (Action.TurnDirection)bb.CatiFirstMove;
+                                Right3.LastTurn = (Action.TurnDirection)bb.CatiFirstMove;
+                                Right3.LastLastTurn = lastLastTurn;
+                                Right3.LastTurn = lastTurn;
                                 actions.Add(Right3);
                             }
+
+
+
                         }
                     }
-                    else
-                    {
-                        if (bb?.CatiPrevMove == -1 && !bb.FirstMove)
+                    else {
+                        Direction d = key.Key;
+                        if (!bb.FirstMove)
                         {
                             Direction[] rightLeft2 = GetRightLeft();
                             Direction directionRight2 = rightLeft2[0];
@@ -308,8 +370,9 @@ public class HeroManager : GameEventListener
                                 right2.Direction = directionRight2;
                                 right2.InteractionTile = key.Value;
                                 right2.Turn = Action.TurnDirection.Right;
-                                right2.CatiFirst = Action.TurnDirection.Dont;
+                                right2.LastTurn = Action.TurnDirection.Dont;
                                 actions.Add(right2);
+                                
                             }
 
                             if (key.Key == directionLeft2)
@@ -320,9 +383,10 @@ public class HeroManager : GameEventListener
                                 Left2.Direction = directionLeft2;
                                 Left2.InteractionTile = key.Value;
                                 Left2.Turn = Action.TurnDirection.Left;
-                                Left2.CatiFirst = Action.TurnDirection.Dont;
+                                Left2.LastTurn = Action.TurnDirection.Dont;
                                 actions.Add(Left2);
-                            }                  
+                               
+                            }
                         }
                     }
                 }
@@ -388,34 +452,13 @@ public class HeroManager : GameEventListener
         inMotion = true;
         yield return BugInstance.GetComponent<BugBehaviour>().MoveFoward.PlayFeedbacksCoroutine(this.transform.position, 1, false);
 
+        if (lastTurn == Action.TurnDirection.Dont)
+        {
+
+        }
+
         if (action.Turn != Action.TurnDirection.Dont)
         {
-            if (action.CatiFirst == Action.TurnDirection.Dont)
-            {
-                if(action.Turn == Action.TurnDirection.Right)
-                {
-                    BugInstance.GetComponent<BugBehaviour>().CatiPrevMove = 0;
-                    BugInstance.GetComponent<BugBehaviour>().CatiFirstMove = 0;
-                }
-                else
-                {
-                    BugInstance.GetComponent<BugBehaviour>().CatiPrevMove = 1;
-                    BugInstance.GetComponent<BugBehaviour>().CatiFirstMove = 1;
-                }
-
-                BugInstance.GetComponent<BugBehaviour>().CatiIndex = 1;
-            }
-            else
-            {
-                if (action.Turn == Action.TurnDirection.Right)
-                {
-                    //BugInstance.GetComponent<BugBehaviour>().CatiPrevMove = 0;
-                }
-                else
-                {
-                    //BugInstance.GetComponent<BugBehaviour>().CatiPrevMove = 1;
-                }
-            }
             if (action.Facing == Direction.North)
             {
                 inMotion = true;
@@ -437,7 +480,10 @@ public class HeroManager : GameEventListener
                 yield return BugInstance.GetComponent<BugBehaviour>().CatiWest.PlayFeedbacksCoroutine(this.transform.position, 1, false);
             }
         }
-
+      
+       
+        lastLastTurn = action.LastTurn;
+        lastTurn = action.Turn;
         inMotion = false;
         CurrentDirection = action.Facing;
         CurrentTile = action.InteractionTile;
@@ -479,5 +525,6 @@ public class Action
     public Tile InteractionTile;
     public enum TurnDirection { Right, Left, Dont }
     public TurnDirection Turn;
-    public TurnDirection CatiFirst;
+    public TurnDirection LastTurn;
+    public TurnDirection LastLastTurn;
 }
