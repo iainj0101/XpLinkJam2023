@@ -28,9 +28,9 @@ public class HeroManager : GameEventListener
 
     public void StartGame(Charm[] UsedBugs)
     {
-        foreach (Charm bug in UsedBugs)
+        foreach (Charm b in UsedBugs)
         {
-            Bugs.Add(bug.BugType);
+            Bugs.Add(b.BugType);
         }
         SwapBug(Bugs[0]);
         PossibleActions = GetPossibleActions();
@@ -107,12 +107,16 @@ public class HeroManager : GameEventListener
         
     }
 
-    public void NextBug()
+    public void NextBug(bool CallNextStep)
     {
         if (Bugs.Count > 1)
         {
             Bugs.Remove(Bugs[0]);
             SwapBug(Bugs[0]);
+            if (CallNextStep)
+            {
+                StepEvent.Raise();
+            }
         }
         else
         {
@@ -129,6 +133,8 @@ public class HeroManager : GameEventListener
                 BugInstance = Instantiate(AntPrefab, CurrentTile.transform.position,this.transform.rotation,this.transform);
                 break;
             case Bug.Hopper:
+                Destroy(BugInstance);
+                BugInstance = Instantiate(HopperPrefab, CurrentTile.transform.position, this.transform.rotation, this.transform);
                 break;
             case Bug.Caterpillar:
                 break;
@@ -257,7 +263,7 @@ public class HeroManager : GameEventListener
         CurrentDirection = action.Direction;
         CurrentTile = action.InteractionTile;
 
-        NextBug();
+        NextBug(false);
 
         StepEvent.CurrentTile = CurrentTile;
         StepEvent.Raise();
