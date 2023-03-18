@@ -163,7 +163,7 @@ public class HeroManager : GameEventListener
         }
 
         Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance.transform);
-        Camera.main.GetComponent<MoreMountains.Tools.MMOrbitalCamera>().Target = BugInstance.transform;
+        
     }
 
     private Direction[] GetRightLeft()
