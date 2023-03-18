@@ -7,6 +7,7 @@ public class HeroManager : Singleton<HeroManager>
     public Tile CurrentTile;
     public enum Bug { Ant, Hopper, Caterpillar }
     public Bug CurrentBug;
+    public List<Bug> Bugs = new List<Bug>(); 
     public enum Direction { North, East, South, West }
     public Direction CurrentDirection;
     public GameObject BugInstance;
