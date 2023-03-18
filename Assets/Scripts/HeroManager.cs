@@ -1,31 +1,89 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class HeroManager : Singleton<HeroManager>
+[Serializable] public enum Direction { North, East, South, West }
+
+public class HeroManager : GameEventListener
 {
+    public StepEvent StepEvent;
     public Tile CurrentTile;
+    public GameObject NorthButton;
+    public GameObject EastButton;
+    public GameObject SouthButton;
+    public GameObject WestButton;
     public enum Bug { Ant, Hopper, Caterpillar }
     public Bug CurrentBug = Bug.Hopper;
     public List<Bug> Bugs = new List<Bug>();
-    public enum Direction { North, East, South, West }
+    public List<Action> PossibleActions = new List<Action>();
+    
     public Direction CurrentDirection;
     public GameObject BugInstance;
     [SerializeField] GameObject AntPrefab;
     [SerializeField] GameObject HopperPrefab;
     [SerializeField] GameObject CaterpillarPrefab;
 
-    private void Update()
+    private void Start()
     {
+        PossibleActions = GetPossibleActions();
+        UpdateButtonUI();
+    }
+    public override void OnEventRaised(GameEvent source)
+    {
+        PossibleActions = GetPossibleActions();
+        UpdateButtonUI();
+    }
+
+    private void UpdateButtonUI()
+    {
+        NorthButton.SetActive(false);
+        EastButton.SetActive(false);
+        SouthButton.SetActive(false);
+        WestButton.SetActive(false);
+        foreach (Action a in PossibleActions)
+        {
+            switch (a.Direction)
+            {
+                case (Direction.North):
+                    NorthButton.SetActive(true);
+                    break;
+                case (Direction.East):
+                    EastButton.SetActive(true);
+                    break;
+                case (Direction.South):
+                    SouthButton.SetActive(true);
+                    break;
+                case (Direction.West):
+                    WestButton.SetActive(true);
+                    break;
+            }
+        }
+    }
+
+    public void TryStep(int direction)
+    {
+        foreach (Action a in PossibleActions)
+        {
+            if (a.Direction == (Direction)direction)
+            {
+                Step(a);
+                return;
+            }
+        }
+        //nope try again silly boy
+    }
+    private void Update()
+    { 
         int horizontalInput = (int)Input.GetAxisRaw("Horizontal");
 
         if (horizontalInput != 0)
         {
             if (horizontalInput > 0)
             {
-                TryStep(Direction.East);
+                TryStep((int)Direction.East);
             }
-            else { TryStep(Direction.West); }
+            else { TryStep((int)Direction.West); }
         }
         int VertInput = (int)Input.GetAxisRaw("Vertical");
 
@@ -33,11 +91,11 @@ public class HeroManager : Singleton<HeroManager>
         {
             if (VertInput > 0)
             {
-                TryStep(Direction.North);
+                TryStep((int)Direction.North);
             }
-            else { TryStep(Direction.South); }
+            else { TryStep((int)Direction.South); }
         }
-
+        
     }
 
     public void SwapBug(Bug bug)
@@ -54,7 +112,7 @@ public class HeroManager : Singleton<HeroManager>
         }
     }
 
-    private List<Action> GetPossibleActions()//add ristrictions based on bug type
+    private List<Action> GetPossibleActions()
     {
         List<Action> actions = new List<Action>();
 
@@ -124,20 +182,6 @@ public class HeroManager : Singleton<HeroManager>
 
         return actions;
     }
-    private void TryStep(Direction direction)
-    {
-        List<Action> actions = GetPossibleActions();
-
-        foreach (Action a in actions)
-        {
-            if (a.Direction == direction)
-            {
-                Step(a);
-                return;
-            }
-        }
-        //nope try again silly boy
-    }
 
     bool inMotion = false;
     IEnumerator Move(Action action)
@@ -148,7 +192,9 @@ public class HeroManager : Singleton<HeroManager>
 
         inMotion = false;
         CurrentTile = action.InteractionTile;
-        //set new step
+
+        StepEvent.CurrentTile = CurrentTile;
+        StepEvent.Raise();
 
         yield break;
     }
@@ -170,7 +216,9 @@ public class HeroManager : Singleton<HeroManager>
         inMotion = false;
         CurrentDirection = action.Direction;
         CurrentTile = action.InteractionTile;
-        //set new step call event
+
+        StepEvent.CurrentTile = CurrentTile;
+        StepEvent.Raise();
 
         yield break;
     }
@@ -198,7 +246,7 @@ public class Action
 {
     public enum ActionType { Move, Turn, MoveAndTurn, Cut }
     public ActionType SetAction;
-    public HeroManager.Direction Direction;
+    public Direction Direction;
     public Tile InteractionTile;
     public enum TurnDirection { Right, Left}
     public TurnDirection Turn;
