@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b04efaf860964f47a5e23a163c9888b, type: 3}
   m_Name: Caterpillar
   m_EditorClassIdentifier: 
+  BugType: 2
   charmType: 1
   color: {r: 1, g: 1, b: 1, a: 1}
   level: 0

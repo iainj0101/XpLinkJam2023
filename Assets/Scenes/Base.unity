@@ -857,9 +857,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1884880412}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextBug
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HeroManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412140248304736685, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988094922015203581, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_text
+      value: Next Bug
+      objectReference: {fileID: 0}
     - target: {fileID: 8394322806306718505, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
       propertyPath: m_Name
-      value: ActionButton
+      value: SwapBugActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394322806306718505, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
@@ -3382,6 +3422,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92fa0ca2df076034c96f5dd877d123c8, type: 3}
+--- !u!1 &1668932319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8394322806306718505, guid: 25e2f9c3fd384ad418609ad85da718f2, type: 3}
+  m_PrefabInstance: {fileID: 787951216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1707374547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4140,6 +4185,7 @@ MonoBehaviour:
   EastButton: {fileID: 1630396543}
   SouthButton: {fileID: 1780376091}
   WestButton: {fileID: 1297005815}
+  NextBugButton: {fileID: 1668932319}
   CurrentBug: 1
   Bugs: 
   CurrentDirection: 0
