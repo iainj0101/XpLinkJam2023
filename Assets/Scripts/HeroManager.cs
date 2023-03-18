@@ -190,7 +190,7 @@ public class HeroManager : GameEventListener
         return rightLeft;
     }
     bool SecondTurn = false;
-    bool fix2 = false;
+    bool fix2 = true;
     Action.TurnDirection lastTurn = Action.TurnDirection.Dont;
     Action.TurnDirection lastLastTurn = Action.TurnDirection.Dont;
     private List<Action> GetPossibleActions()
@@ -239,9 +239,6 @@ public class HeroManager : GameEventListener
                 actions.Add(Left);
                 break;
             case (Bug.Caterpillar):
-                Debug.Log(lastTurn + " Last");
-                Debug.Log(lastLastTurn + " LastLast");
-                Debug.Log("-");
                 foreach (KeyValuePair<Direction, Tile> key in CurrentTile.Tiles)
                 {
                     if (key.Key == CurrentDirection)
@@ -395,6 +392,8 @@ public class HeroManager : GameEventListener
                     bb.FirstMove = false;
                     bb.PreviousDirection = CurrentDirection;
                 }
+                if (fix2) fix2 = false;
+                if (!fix2) SecondTurn = false;
                 break;
         }
 
