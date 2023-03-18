@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public bool CanMoveTo = true;
+    public bool IsEndTile = true;
     public Dictionary<Direction, Tile> Tiles = new Dictionary<Direction, Tile>();
 
     private void Start()

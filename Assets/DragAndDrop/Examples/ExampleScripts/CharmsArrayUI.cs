@@ -17,7 +17,7 @@ public class CharmsArrayUI : ObjectContainerArray
     public Charm.CharmType charmType = Charm.CharmType.All;
     public Text description;
 
-    void Start()
+    public void Load()
     {
         if (!BeEmpty)
         {
