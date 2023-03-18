@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MoreMountains;
 
 [Serializable] public enum Direction { North, East, South, West }
 
@@ -28,6 +29,7 @@ public class HeroManager : GameEventListener
     {
         PossibleActions = GetPossibleActions();
         UpdateButtonUI();
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance?.transform);
     }
     public override void OnEventRaised(GameEvent source)
     {
@@ -73,6 +75,7 @@ public class HeroManager : GameEventListener
         }
         //nope try again silly boy
     }
+
     private void Update()
     { 
         int horizontalInput = (int)Input.GetAxisRaw("Horizontal");
@@ -100,9 +103,11 @@ public class HeroManager : GameEventListener
 
     public void SwapBug(Bug bug)
     {
+        CurrentBug = bug;
         switch (bug)
         {
             case Bug.Ant:
+                Destroy(BugInstance);
                 BugInstance = Instantiate(AntPrefab, this.transform);
                 break;
             case Bug.Hopper:
@@ -110,6 +115,23 @@ public class HeroManager : GameEventListener
             case Bug.Caterpillar:
                 break;
         }
+
+        switch (CurrentDirection) {
+            case Direction.North:
+                BugInstance.transform.rotation = Quaternion.Euler(0,0,0);
+                break;
+            case Direction.East:
+                BugInstance.transform.rotation = Quaternion.Euler(0, 90, 0);
+                break;
+            case Direction.South:
+                BugInstance.transform.rotation = Quaternion.Euler(0, 180, 0);
+                break;
+            case Direction.West:
+                BugInstance.transform.rotation = Quaternion.Euler(0, 270, 0);
+                break;
+        }
+
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance.transform);
     }
 
     private List<Action> GetPossibleActions()
@@ -217,8 +239,11 @@ public class HeroManager : GameEventListener
         CurrentDirection = action.Direction;
         CurrentTile = action.InteractionTile;
 
+        SwapBug(Bug.Ant);
+
         StepEvent.CurrentTile = CurrentTile;
         StepEvent.Raise();
+
 
         yield break;
     }
