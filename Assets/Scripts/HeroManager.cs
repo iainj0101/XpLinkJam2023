@@ -6,8 +6,8 @@ public class HeroManager : Singleton<HeroManager>
 {
     public Tile CurrentTile;
     public enum Bug { Ant, Hopper, Caterpillar }
-    public Bug CurrentBug;
-    public List<Bug> Bugs = new List<Bug>(); 
+    public Bug CurrentBug = Bug.Hopper;
+    public List<Bug> Bugs = new List<Bug>();
     public enum Direction { North, East, South, West }
     public Direction CurrentDirection;
     public GameObject BugInstance;
@@ -58,17 +58,69 @@ public class HeroManager : Singleton<HeroManager>
     {
         List<Action> actions = new List<Action>();
 
-        foreach (KeyValuePair<Direction, Tile> key in CurrentTile.Tiles)
+        switch (CurrentBug)
         {
-            if (key.Value.CanMoveTo)
-            {
-                Action a = new Action();
-                a.SetAction = Action.ActionType.Move;
-                a.Direction = key.Key;
-                a.InteractionTile = key.Value;
-                actions.Add(a);
-            }
+            case (Bug.Ant):
+                foreach (KeyValuePair<Direction, Tile> key in CurrentTile.Tiles)
+                {
+                    if (key.Key == CurrentDirection)
+                    {
+                        if (key.Value.CanMoveTo)
+                        {
+                            Action a = new Action();
+                            a.SetAction = Action.ActionType.Move;
+                            a.Direction = key.Key;
+                            a.InteractionTile = key.Value;
+                            actions.Add(a);
+                        }
+                        else
+                        {
+                            //die
+                        }
+                    }
+                }
+                break;
+            case (Bug.Hopper):
+                Direction directionRight = CurrentDirection;
+                Direction directionLeft = CurrentDirection;
+                switch (CurrentDirection)
+                {
+                    case Direction.North:
+                        directionRight = Direction.East;
+                        directionLeft = Direction.West;
+                        break;
+                    case Direction.East:
+                        directionRight = Direction.South;
+                        directionLeft = Direction.North;
+                        break;
+                    case Direction.South:
+                        directionRight = Direction.West;
+                        directionLeft = Direction.East;
+                        break;
+                    case Direction.West:
+                        directionRight = Direction.North;
+                        directionLeft = Direction.South;
+                        break;
+                }
+                Action right = new Action();
+                right.SetAction = Action.ActionType.Turn;
+                right.Direction = directionRight;
+                right.InteractionTile = CurrentTile;
+                right.Turn = Action.TurnDirection.Right;
+                actions.Add(right);
+
+                Action Left = new Action();
+                Left.SetAction = Action.ActionType.Turn;
+                Left.Direction = directionLeft;
+                Left.InteractionTile = CurrentTile;
+                Left.Turn = Action.TurnDirection.Left;
+                actions.Add(Left);
+                break;
+            case (Bug.Caterpillar):
+                break;
         }
+
+        //next bug
 
         return actions;
     }
@@ -81,6 +133,7 @@ public class HeroManager : Singleton<HeroManager>
             if (a.Direction == direction)
             {
                 Step(a);
+                return;
             }
         }
         //nope try again silly boy
@@ -100,16 +153,40 @@ public class HeroManager : Singleton<HeroManager>
         yield break;
     }
 
+    IEnumerator Turn(Action action)
+    {
+        if (action.Turn == Action.TurnDirection.Right)
+        {
+            BugInstance.GetComponent<BugBehaviour>().TurnRight.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_DestinationTransform>().Destination = action.InteractionTile?.transform;
+            inMotion = true;
+            yield return BugInstance.GetComponent<BugBehaviour>().TurnRight.PlayFeedbacksCoroutine(this.transform.position, 1, false);
+        }
+        else
+        {
+            BugInstance.GetComponent<BugBehaviour>().TurnLeft.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_DestinationTransform>().Destination = action.InteractionTile?.transform;
+            inMotion = true;
+            yield return BugInstance.GetComponent<BugBehaviour>().TurnLeft.PlayFeedbacksCoroutine(this.transform.position, 1, false);
+        }
+        inMotion = false;
+        CurrentDirection = action.Direction;
+        CurrentTile = action.InteractionTile;
+        //set new step call event
+
+        yield break;
+    }
+
     private void Step(Action action)
     {
         //get tile type in direstion and 
         switch (action.SetAction)
         {
             case Action.ActionType.Move:
-                if(!inMotion)
-                StartCoroutine(Move(action));   
+                if (!inMotion)
+                    StartCoroutine(Move(action));
                 break;
             case Action.ActionType.Turn:
+                if (!inMotion)
+                    StartCoroutine(Turn(action));
                 break;
             case Action.ActionType.Cut:
                 break;
@@ -119,8 +196,10 @@ public class HeroManager : Singleton<HeroManager>
 
 public class Action
 {
-    public enum ActionType { Move, Turn, Cut }
+    public enum ActionType { Move, Turn, MoveAndTurn, Cut }
     public ActionType SetAction;
     public HeroManager.Direction Direction;
     public Tile InteractionTile;
+    public enum TurnDirection { Right, Left}
+    public TurnDirection Turn;
 }
