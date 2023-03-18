@@ -25,6 +25,14 @@ public class Player : MonoBehaviour
     public Charm boots;
     public Charm armour;
 
+    public void LoadPlayer(CharmList level)
+    {
+        LevelBugs.charmList = level;
+        UseBugs.charmList = level;
+        LevelBugs.Load();
+        UseBugs.Load();
+    }
+
     // accessor stuff for UI to use
     public enum CharmList
     {
