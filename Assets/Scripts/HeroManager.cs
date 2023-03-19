@@ -175,6 +175,7 @@ public class HeroManager : GameEventListener
         if (BugInstance != null)
         {
             DeathEffect.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_Scale>().AnimateScaleTarget = BugInstance.transform;
+            DeathEffect.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_ParticlesInstantiation>().TargetWorldPosition = BugInstance.transform.position;
         }
 
         yield return DeathEffect.PlayFeedbacksCoroutine(this.transform.position, 1, false);
