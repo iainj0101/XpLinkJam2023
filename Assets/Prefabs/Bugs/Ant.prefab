@@ -195,7 +195,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 6767557806393499737}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: 4f695319e626b31488c89d7236767b38, type: 3}
+        Sfx: {fileID: 8300000, guid: fa3f689e14b7857409b8f8c05490c3cd, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -1026,7 +1026,16 @@ MonoBehaviour:
   MoveFoward: {fileID: 6767557806393499737}
   TurnRight: {fileID: 0}
   TurnLeft: {fileID: 0}
+  CatiNorth: {fileID: 0}
+  CatiEast: {fileID: 0}
+  CatiSouth: {fileID: 0}
+  CatiWest: {fileID: 0}
   Land: {fileID: 0}
+  CatiPrevMove: -1
+  CatiIndex: 0
+  CatiFirstMove: -1
+  FirstMove: 1
+  PreviousDirection: 0
 --- !u!1 &6767557808163712348
 GameObject:
   m_ObjectHideFlags: 0

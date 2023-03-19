@@ -194,7 +194,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 4769388645203108361}
         DebugActive: 0
-        Sfx: {fileID: 8300000, guid: 4f695319e626b31488c89d7236767b38, type: 3}
+        Sfx: {fileID: 8300000, guid: 13f73ea66e4f15442b0f9c5a32edbdc2, type: 3}
         RandomSfx: []
         TestPlayButton:
           ButtonText: Debug Play Sound
@@ -1024,7 +1024,7 @@ MonoBehaviour:
     - rid: 5940839883676057644
       type: {class: MMF_Sound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
       data:
-        Active: 1
+        Active: 0
         UniqueID: -330099238
         Label: Sound
         ChannelMode: 0
