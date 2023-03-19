@@ -47,6 +47,7 @@ public class Froggy : GameEventListener
                 break;
         }
         TileOn = this.transform.parent.GetComponent<Tile>();
+
         if (startOut)
         {
             StartCoroutine(Out());

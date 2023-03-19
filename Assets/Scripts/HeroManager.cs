@@ -148,6 +148,11 @@ public class HeroManager : GameEventListener
             else { TryStep((int)Direction.South); }
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && Bugs.Count > 1)
+        {
+            NextBug(false);
+        }
+
     }
 
     public void NextBug(bool CallNextStep)
