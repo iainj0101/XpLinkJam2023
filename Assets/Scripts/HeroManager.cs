@@ -170,24 +170,29 @@ public class HeroManager : GameEventListener
         }
     }
 
-    IEnumerator Swap()
+    IEnumerator Swap(Bug bug)
     {
-        //BugInstance.GetComponent<BugBehaviour>().MoveFoward.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_DestinationTransform>().Destination = action.InteractionTile?.transform;
-        inMotion = true;
-        yield return BugInstance.GetComponent<BugBehaviour>().MoveFoward.PlayFeedbacksCoroutine(this.transform.position, 1, false);
+        if (BugInstance != null) {
+            SwapEffect.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_ParticlesInstantiation>().TargetWorldPosition = BugInstance.transform.position;
+        }
+        else
+        {
+            SwapEffect.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_ParticlesInstantiation>().TargetWorldPosition = this.transform.position;
+        }
+        SwapPTwo(bug);
+        yield return SwapEffect.PlayFeedbacksCoroutine(this.transform.position, 1, false);
 
-        inMotion = false;
-
-        StepEvent.CurrentTile = CurrentTile;
-        StepEvent.Raise();
 
         yield break;
     }
     public void SwapBug(Bug bug)
     {
-        if (!inMotion)
-            StartCoroutine(Swap());
         CurrentBug = bug;
+        StartCoroutine(Swap(bug));
+    }
+
+    private void SwapPTwo(Bug bug)
+    {
         switch (bug)
         {
             case Bug.Ant:
@@ -225,9 +230,9 @@ public class HeroManager : GameEventListener
         }
 
         Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance.transform);
-        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().Offset = new Vector3(0,5,-2);
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().Offset = new Vector3(0, 5, -2);
         Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().FollowPositionY = false;
-        Camera.main.transform.rotation = Quaternion.Euler(60,0,0);
+        Camera.main.transform.rotation = Quaternion.Euler(60, 0, 0);
     }
 
     private Direction[] GetRightLeft()

@@ -206,13 +206,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanMoveTo: 1
   IsEndTile: 1
-  effect: {fileID: 0}
+  effect: {fileID: 2502299405966152233}
   lm: {fileID: 5080040198161439243}
 --- !u!4 &1960433543975302678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1375157750560365004, guid: 02da8487291830f4aabb24d34c25144e, type: 3}
   m_PrefabInstance: {fileID: 585838881345040346}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2502299405966152233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3069384937462726131, guid: 02da8487291830f4aabb24d34c25144e, type: 3}
+  m_PrefabInstance: {fileID: 585838881345040346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1247341745302536831
 PrefabInstance:
   m_ObjectHideFlags: 0
