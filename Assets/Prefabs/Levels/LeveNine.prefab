@@ -360,6 +360,7 @@ MonoBehaviour:
   IsEndTile: 1
   effect: {fileID: 2502299405966152233}
   lm: {fileID: 5080040198161439243}
+  LAST: 1
 --- !u!4 &1960433543975302678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1375157750560365004, guid: 02da8487291830f4aabb24d34c25144e, type: 3}

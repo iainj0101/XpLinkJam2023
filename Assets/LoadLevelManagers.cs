@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadLevelManagers : MonoBehaviour
 {
@@ -14,6 +15,14 @@ public class LoadLevelManagers : MonoBehaviour
     private void Start()
     {
         DestroyAndGoNext(Level1);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(0).name);
+        }
     }
     public void DestroyAndGoNext(GameObject nextLevel)
     {
