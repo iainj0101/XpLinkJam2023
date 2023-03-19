@@ -116,7 +116,6 @@ public class Froggy : GameEventListener
     IEnumerator In()
     {
         yield return Inmmf.PlayFeedbacksCoroutine(this.transform.position, 1, false);
-        CheckKill();
         yield break;
     }
 }

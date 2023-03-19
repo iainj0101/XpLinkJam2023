@@ -160,7 +160,16 @@ public class HeroManager : GameEventListener
         {
             Bugs.Remove(Bugs[0]);
             SwapBug(Bugs[0]);
-            if (CallNextStep)
+
+            CurrentTile.GetTiles();
+            PossibleActions = GetPossibleActions();
+            UpdateButtonUI();
+            if (CurrentTile.GetComponent<EndTile>() != null)
+            {
+                CurrentTile.GetComponent<EndTile>().Win();
+            }
+
+            if (CallNextStep == true)
             {
                 StepEvent.Raise();
             }

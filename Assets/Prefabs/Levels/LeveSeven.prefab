@@ -75,7 +75,7 @@ MonoBehaviour:
   StartTile: {fileID: 1332248437979595962}
   player: {fileID: 0}
   Level: 6
-  NextLevel: {fileID: 1698197841543114905, guid: 5468b1aa102672a4abe196e3ae7c7962, type: 3}
+  NextLevel: {fileID: 1698197841543114905, guid: b3704ea5210884d4aa17816fe75da161, type: 3}
   StartDirection: 0
 --- !u!1001 &101491887031016822
 PrefabInstance:
