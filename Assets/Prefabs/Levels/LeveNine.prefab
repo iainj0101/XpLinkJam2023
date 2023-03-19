@@ -1033,7 +1033,7 @@ PrefabInstance:
       objectReference: {fileID: 5080040198161439243}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: index
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: Length
@@ -1041,7 +1041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: startOut
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: MyDirection
