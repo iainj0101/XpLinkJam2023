@@ -19,6 +19,7 @@ public class HeroManager : GameEventListener
     public GameObject ResetButton;
     public LoadLevelManagers llm;
     public MMF_Player SwapEffect;
+    public MMF_Player DeathEffect;
     public enum Bug { Ant, Hopper, Caterpillar }
     public Bug CurrentBug = Bug.Hopper;
     public List<Bug> Bugs = new List<Bug>();
@@ -169,6 +170,18 @@ public class HeroManager : GameEventListener
             //die
         }
     }
+    IEnumerator Die()
+    {
+        if (BugInstance != null)
+        {
+            DeathEffect.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_Scale>().AnimateScaleTarget = BugInstance.transform;
+        }
+
+        yield return DeathEffect.PlayFeedbacksCoroutine(this.transform.position, 1, false);
+
+        LevelReset();
+        yield break;
+    }
 
     IEnumerator Swap(Bug bug)
     {
@@ -289,6 +302,7 @@ public class HeroManager : GameEventListener
                         else
                         {
                             //die
+                            if (Bugs.Count !> 1) { StartCoroutine(Die()); }
                         }
                     }
                 }
@@ -473,6 +487,11 @@ public class HeroManager : GameEventListener
         }
 
         //next bug
+
+        if (actions.Count == 0 && Bugs.Count <= 1)
+        {
+            StartCoroutine(Die());
+        }
 
         return actions;
     }
