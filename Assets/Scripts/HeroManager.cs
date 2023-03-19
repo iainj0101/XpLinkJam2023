@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using MoreMountains;
+using MoreMountains.Feedbacks;
 
 [Serializable] public enum Direction { North, East, South, West }
 
@@ -17,6 +18,7 @@ public class HeroManager : GameEventListener
     public GameObject NextBugButton;
     public GameObject ResetButton;
     public LoadLevelManagers llm;
+    public MMF_Player SwapEffect;
     public enum Bug { Ant, Hopper, Caterpillar }
     public Bug CurrentBug = Bug.Hopper;
     public List<Bug> Bugs = new List<Bug>();
@@ -167,8 +169,24 @@ public class HeroManager : GameEventListener
             //die
         }
     }
+
+    IEnumerator Swap()
+    {
+        //BugInstance.GetComponent<BugBehaviour>().MoveFoward.GetFeedbackOfType<MoreMountains.Feedbacks.MMF_DestinationTransform>().Destination = action.InteractionTile?.transform;
+        inMotion = true;
+        yield return BugInstance.GetComponent<BugBehaviour>().MoveFoward.PlayFeedbacksCoroutine(this.transform.position, 1, false);
+
+        inMotion = false;
+
+        StepEvent.CurrentTile = CurrentTile;
+        StepEvent.Raise();
+
+        yield break;
+    }
     public void SwapBug(Bug bug)
     {
+        if (!inMotion)
+            StartCoroutine(Swap());
         CurrentBug = bug;
         switch (bug)
         {
@@ -207,7 +225,9 @@ public class HeroManager : GameEventListener
         }
 
         Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance.transform);
-
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().Offset = new Vector3(0,5,-2);
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().FollowPositionY = false;
+        Camera.main.transform.rotation = Quaternion.Euler(60,0,0);
     }
 
     private Direction[] GetRightLeft()

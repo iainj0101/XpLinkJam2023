@@ -17,6 +17,11 @@ public class LoadLevelManagers : MonoBehaviour
     }
     public void DestroyAndGoNext(GameObject nextLevel)
     {
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(this.transform);
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().FollowPositionY = true;
+        Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().Offset = new Vector3(0, 10, 0);
+        Camera.main.transform.rotation = Quaternion.Euler(90, 0, 0);
+
         Hero.GetComponent<HeroManager>().ResetButton.SetActive(false);
         Destroy(Hero.GetComponent<HeroManager>().BugInstance);
         Destroy(CurrentLevel);
