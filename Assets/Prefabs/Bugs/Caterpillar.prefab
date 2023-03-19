@@ -122,7 +122,7 @@ MonoBehaviour:
   - rid: 5940839850822860821
   - rid: 5940839850822860822
   - rid: 5940839850822860823
-  KeepPlayModeChanges: 0
+  KeepPlayModeChanges: 1
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
@@ -434,7 +434,7 @@ MonoBehaviour:
           Initialized: 0
         RemapCurveZero: 0
         RemapCurveZeroAlt: 0
-        RemapCurveOne: 2.5
+        RemapCurveOne: 0.2
         RemapCurveOneAlt: 1
         AnimateX: 0
         AnimatePositionTweenX:
@@ -1213,7 +1213,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapIntensityZero: 0
-        RemapIntensityOne: 50
+        RemapIntensityOne: 23
 --- !u!1 &6491283201534776657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,23 +1330,23 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 5940839850822860817
-  - rid: 5940839850822860819
-  - rid: 5940839850822860820
-  - rid: 5940839850822860821
-  - rid: 5940839850822860822
-  - rid: 5940839850822860823
-  KeepPlayModeChanges: 0
+  - rid: 5940839883676057601
+  - rid: 5940839883676057602
+  - rid: 5940839883676057603
+  - rid: 5940839883676057604
+  - rid: 5940839883676057605
+  - rid: 5940839883676057606
+  KeepPlayModeChanges: 1
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
     version: 2
     RefIds:
-    - rid: 5940839850822860817
+    - rid: 5940839883676057601
       type: {class: MMF_Sound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
       data:
         Active: 0
-        UniqueID: -61443101
+        UniqueID: -893679828
         Label: Sound
         ChannelMode: 0
         Channel: 0
@@ -1425,11 +1425,11 @@ MonoBehaviour:
         MaxPitch: 1
         SfxAudioMixerGroup: {fileID: 0}
         Priority: 128
-    - rid: 5940839850822860819
+    - rid: 5940839883676057602
       type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -596450821
+        UniqueID: 2119739250
         Label: Squash and Stretch
         ChannelMode: 0
         Channel: 0
@@ -1545,11 +1545,11 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
         DestinationScale: 2
-    - rid: 5940839850822860820
+    - rid: 5940839883676057603
       type: {class: MMF_Position, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -652427187
+        UniqueID: -1369980140
         Label: Position
         ChannelMode: 0
         Channel: 0
@@ -1648,7 +1648,7 @@ MonoBehaviour:
           Initialized: 0
         RemapCurveZero: 0
         RemapCurveZeroAlt: 0
-        RemapCurveOne: 2.5
+        RemapCurveOne: 0.2
         RemapCurveOneAlt: 1
         AnimateX: 0
         AnimatePositionTweenX:
@@ -1822,11 +1822,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 5940839850822860821
+    - rid: 5940839883676057604
       type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: 1084030764
+        UniqueID: -475368790
         Label: Squash and Stretch
         ChannelMode: 0
         Channel: 0
@@ -1942,11 +1942,11 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
         DestinationScale: 2
-    - rid: 5940839850822860822
+    - rid: 5940839883676057605
       type: {class: MMF_Rotation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -318684431
+        UniqueID: 1856130858
         Label: Rotation
         ChannelMode: 0
         Channel: 0
@@ -2258,11 +2258,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 5940839850822860823
+    - rid: 5940839883676057606
       type: {class: MMF_LensDistortion, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.PostProcessing}
       data:
         Active: 1
-        UniqueID: 774764571
+        UniqueID: -1995900062
         Label: Lens Distortion
         ChannelMode: 0
         Channel: 0
@@ -2427,7 +2427,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapIntensityZero: 0
-        RemapIntensityOne: 50
+        RemapIntensityOne: 23
 --- !u!1 &6767557806393499739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,10 +2546,10 @@ MonoBehaviour:
   FeedbacksList:
   - rid: 5940839874943254528
   - rid: 5940839874943254529
-  - rid: 5940839874943254530
   - rid: 5940839874943254531
   - rid: 5940839874943254532
-  KeepPlayModeChanges: 0
+  - rid: 5940839883676057600
+  KeepPlayModeChanges: 1
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
@@ -2887,126 +2887,6 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 5940839874943254530
-      type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
-      data:
-        Active: 1
-        UniqueID: -1177035365
-        Label: Squash and Stretch
-        ChannelMode: 0
-        Channel: 0
-        MMChannelDefinition: {fileID: 0}
-        Chance: 100
-        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
-        Timing:
-          TimescaleMode: 0
-          ExcludeFromHoldingPauses: 0
-          ContributeToTotalDuration: 1
-          InitialDelay: 0
-          CooldownDuration: 0
-          InterruptsOnStop: 1
-          NumberOfRepeats: 0
-          RepeatForever: 0
-          DelayBetweenRepeats: 1
-          MMFeedbacksDirectionCondition: 0
-          PlayDirection: 0
-          ConstantIntensity: 0
-          UseIntensityInterval: 0
-          IntensityIntervalMin: 0
-          IntensityIntervalMax: 0
-          Sequence: {fileID: 0}
-          TrackID: 0
-          Quantized: 0
-          TargetBPM: 120
-        AutomatedTargetAcquisition:
-          Mode: 0
-          ChildIndex: 0
-        RandomizeOutput: 0
-        RandomMultiplier: {x: 0.8, y: 1}
-        RandomizeDuration: 0
-        RandomDurationMultiplier: {x: 0.5, y: 2}
-        UseRange: 0
-        RangeDistance: 5
-        UseRangeFalloff: 0
-        RangeFalloff:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        RemapRangeFalloff: {x: 0, y: 1}
-        Owner: {fileID: 6767557806393499737}
-        DebugActive: 0
-        SquashAndStretchTarget: {fileID: 6767557806955365955}
-        Mode: 0
-        Axis: 7
-        AnimateScaleDuration: 0.2
-        RemapCurveZero: 1
-        RemapCurveOne: 1
-        Offset: 0
-        AnimateCurve:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 0.3374985
-            value: 1.5196228
-            inSlope: 0.16523524
-            outSlope: 0.16523524
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.53773695
-          - serializedVersion: 3
-            time: 0.71559584
-            value: 1.3352963
-            inSlope: -1.1414601
-            outSlope: -1.1414601
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 1
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        AllowAdditivePlays: 0
-        DetermineScaleOnPlay: 0
-        DestinationScale: 2
     - rid: 5940839874943254531
       type: {class: MMF_Position, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
@@ -3404,6 +3284,126 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
         DestinationScale: 2
+    - rid: 5940839883676057600
+      type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
+      data:
+        Active: 1
+        UniqueID: 836257693
+        Label: Squash and Stretch
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        AutomatedTargetAcquisition:
+          Mode: 0
+          ChildIndex: 0
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        Owner: {fileID: 6767557806393499737}
+        DebugActive: 0
+        SquashAndStretchTarget: {fileID: 6767557806955365955}
+        Mode: 0
+        Axis: 7
+        AnimateScaleDuration: 0.3
+        RemapCurveZero: 1
+        RemapCurveOne: 2
+        Offset: 0
+        AnimateCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.4937523
+            value: 1.4043236
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.92676866
+            value: 0.038163595
+            inSlope: 0.23901036
+            outSlope: 0.23901036
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.8778584
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        AllowAdditivePlays: 0
+        DetermineScaleOnPlay: 0
+        DestinationScale: 2
 --- !u!1 &6767557806955365964
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,7 +3428,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6767557806955365964}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4338,23 +4338,23 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 5940839850822860808
-  - rid: 5940839850822860810
-  - rid: 5940839850822860811
-  - rid: 5940839850822860812
-  - rid: 5940839850822860813
-  - rid: 5940839850822860815
+  - rid: 5940839883676057619
+  - rid: 5940839883676057620
+  - rid: 5940839883676057621
+  - rid: 5940839883676057622
+  - rid: 5940839883676057623
+  - rid: 5940839883676057624
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
     version: 2
     RefIds:
-    - rid: 5940839850822860808
+    - rid: 5940839883676057619
       type: {class: MMF_Sound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
       data:
-        Active: 1
-        UniqueID: -1532504670
+        Active: 0
+        UniqueID: 717321531
         Label: Sound
         ChannelMode: 0
         Channel: 0
@@ -4433,11 +4433,11 @@ MonoBehaviour:
         MaxPitch: 1
         SfxAudioMixerGroup: {fileID: 0}
         Priority: 128
-    - rid: 5940839850822860810
+    - rid: 5940839883676057620
       type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: 489581168
+        UniqueID: 1113033159
         Label: Squash and Stretch
         ChannelMode: 0
         Channel: 0
@@ -4553,11 +4553,11 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
         DestinationScale: 2
-    - rid: 5940839850822860811
+    - rid: 5940839883676057621
       type: {class: MMF_Position, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: 1763305398
+        UniqueID: 2057539725
         Label: Position
         ChannelMode: 0
         Channel: 0
@@ -4656,7 +4656,7 @@ MonoBehaviour:
           Initialized: 0
         RemapCurveZero: 0
         RemapCurveZeroAlt: 0
-        RemapCurveOne: 2.5
+        RemapCurveOne: 0.2
         RemapCurveOneAlt: 1
         AnimateX: 0
         AnimatePositionTweenX:
@@ -4830,11 +4830,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 5940839850822860812
+    - rid: 5940839883676057622
       type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -1539173587
+        UniqueID: 16970318
         Label: Squash and Stretch
         ChannelMode: 0
         Channel: 0
@@ -4950,11 +4950,11 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
         DestinationScale: 2
-    - rid: 5940839850822860813
+    - rid: 5940839883676057623
       type: {class: MMF_Rotation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -2016615286
+        UniqueID: 1997264547
         Label: Rotation
         ChannelMode: 0
         Channel: 0
@@ -5266,11 +5266,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 5940839850822860815
+    - rid: 5940839883676057624
       type: {class: MMF_LensDistortion, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.PostProcessing}
       data:
         Active: 1
-        UniqueID: 388605723
+        UniqueID: -1827397370
         Label: Lens Distortion
         ChannelMode: 0
         Channel: 0
@@ -5344,8 +5344,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.21874985
             value: 0
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5353,8 +5353,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.34437484
             value: -0.1
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5362,8 +5362,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.38624987
             value: 0.1
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5371,8 +5371,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.5118749
             value: -0.3
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5380,8 +5380,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.55374986
             value: 0.3
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5389,8 +5389,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.7212499
             value: -0.7
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5398,8 +5398,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.76312494
             value: 0.7
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5407,8 +5407,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.8468749
             value: -1
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5416,8 +5416,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0.8887499
             value: 1
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5425,8 +5425,8 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 1.05625
             value: 0
-            inSlope: -0
-            outSlope: -0
+            inSlope: 0
+            outSlope: 0
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
@@ -5435,7 +5435,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapIntensityZero: 0
-        RemapIntensityOne: 50
+        RemapIntensityOne: 23
 --- !u!1 &9060699364621449151
 GameObject:
   m_ObjectHideFlags: 0
@@ -5552,23 +5552,23 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 5940839850822860817
-  - rid: 5940839850822860819
-  - rid: 5940839850822860820
-  - rid: 5940839850822860821
-  - rid: 5940839850822860822
-  - rid: 5940839850822860823
-  KeepPlayModeChanges: 0
+  - rid: 5940839883676057607
+  - rid: 5940839883676057608
+  - rid: 5940839883676057609
+  - rid: 5940839883676057610
+  - rid: 5940839883676057611
+  - rid: 5940839883676057612
+  KeepPlayModeChanges: 1
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
     version: 2
     RefIds:
-    - rid: 5940839850822860817
+    - rid: 5940839883676057607
       type: {class: MMF_Sound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
       data:
         Active: 0
-        UniqueID: -61443101
+        UniqueID: -8122355
         Label: Sound
         ChannelMode: 0
         Channel: 0
@@ -5647,11 +5647,11 @@ MonoBehaviour:
         MaxPitch: 1
         SfxAudioMixerGroup: {fileID: 0}
         Priority: 128
-    - rid: 5940839850822860819
+    - rid: 5940839883676057608
       type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -596450821
+        UniqueID: -867160416
         Label: Squash and Stretch
         ChannelMode: 0
         Channel: 0
@@ -5767,11 +5767,11 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
         DestinationScale: 2
-    - rid: 5940839850822860820
+    - rid: 5940839883676057609
       type: {class: MMF_Position, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -652427187
+        UniqueID: -1731113104
         Label: Position
         ChannelMode: 0
         Channel: 0
@@ -5870,7 +5870,7 @@ MonoBehaviour:
           Initialized: 0
         RemapCurveZero: 0
         RemapCurveZeroAlt: 0
-        RemapCurveOne: 2.5
+        RemapCurveOne: 0.2
         RemapCurveOneAlt: 1
         AnimateX: 0
         AnimatePositionTweenX:
@@ -6044,11 +6044,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 5940839850822860821
+    - rid: 5940839883676057610
       type: {class: MMF_SquashAndStretch, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: 1084030764
+        UniqueID: 632474327
         Label: Squash and Stretch
         ChannelMode: 0
         Channel: 0
@@ -6164,11 +6164,11 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         DetermineScaleOnPlay: 0
         DestinationScale: 2
-    - rid: 5940839850822860822
+    - rid: 5940839883676057611
       type: {class: MMF_Rotation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
-        UniqueID: -318684431
+        UniqueID: -190562025
         Label: Rotation
         ChannelMode: 0
         Channel: 0
@@ -6480,11 +6480,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 5940839850822860823
+    - rid: 5940839883676057612
       type: {class: MMF_LensDistortion, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.PostProcessing}
       data:
         Active: 1
-        UniqueID: 774764571
+        UniqueID: -1674383101
         Label: Lens Distortion
         ChannelMode: 0
         Channel: 0
@@ -6649,7 +6649,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapIntensityZero: 0
-        RemapIntensityOne: 50
+        RemapIntensityOne: 23
 --- !u!1001 &1454470649704421437
 PrefabInstance:
   m_ObjectHideFlags: 0
