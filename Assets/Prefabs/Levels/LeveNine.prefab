@@ -69,9 +69,9 @@ MonoBehaviour:
   Hero: {fileID: 0}
   StartTile: {fileID: 1332248437979595962}
   player: {fileID: 0}
-  Level: 7
+  Level: 8
   NextLevel: {fileID: 1698197841543114905}
-  StartDirection: 0
+  StartDirection: 1
 --- !u!1001 &10474684510116003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -676,8 +676,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5080040198161439243}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: Length
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
+      propertyPath: startOut
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: MyDirection
@@ -1681,8 +1689,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5080040198161439243}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: Length
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
+      propertyPath: startOut
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: MyDirection
@@ -1750,8 +1766,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5080040198161439243}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: Length
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
+      propertyPath: startOut
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4769388645502758128, guid: 2c56b85792acf3549bdd41cf18fa6c93, type: 3}
       propertyPath: MyDirection
