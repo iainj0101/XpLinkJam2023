@@ -17,6 +17,7 @@ public class LoadLevelManagers : MonoBehaviour
     }
     public void DestroyAndGoNext(GameObject nextLevel)
     {
+        Hero.GetComponent<HeroManager>().ResetButton.SetActive(false);
         Destroy(Hero.GetComponent<HeroManager>().BugInstance);
         Destroy(CurrentLevel);
         CurrentLevel = Instantiate(nextLevel, this.transform);

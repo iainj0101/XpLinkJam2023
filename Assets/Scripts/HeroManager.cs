@@ -15,6 +15,8 @@ public class HeroManager : GameEventListener
     public GameObject SouthButton;
     public GameObject WestButton;
     public GameObject NextBugButton;
+    public GameObject ResetButton;
+    public LoadLevelManagers llm;
     public enum Bug { Ant, Hopper, Caterpillar }
     public Bug CurrentBug = Bug.Hopper;
     public List<Bug> Bugs = new List<Bug>();
@@ -28,24 +30,37 @@ public class HeroManager : GameEventListener
 
     public void StartGame(Charm[] UsedBugs)
     {
+        ResetButton.SetActive(true);
         Bugs.Clear();
         foreach (Charm b in UsedBugs)
         {
             Bugs.Add(b.BugType);
         }
         SwapBug(Bugs[0]);
+        CurrentTile.GetTiles();
         PossibleActions = GetPossibleActions();
         UpdateButtonUI();
         Camera.main.GetComponent<MoreMountains.Tools.MMFollowTarget>().ChangeFollowTarget(BugInstance?.transform);
     }
     public override void OnEventRaised(GameEvent source)
     {
+        CurrentTile.GetTiles();
         PossibleActions = GetPossibleActions();
         UpdateButtonUI();
         if (CurrentTile.GetComponent<EndTile>() != null)
         {
             CurrentTile.GetComponent<EndTile>().Win();
         }
+    }
+
+    public void LevelReset()
+    {
+        NorthButton.SetActive(false);
+        EastButton.SetActive(false);
+        SouthButton.SetActive(false);
+        WestButton.SetActive(false);
+        NextBugButton.SetActive(false);
+        llm.DestroyAndGoNext(llm.CurrentLevel);
     }
 
     private void UpdateButtonUI()

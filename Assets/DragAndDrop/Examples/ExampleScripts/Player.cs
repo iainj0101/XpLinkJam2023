@@ -70,22 +70,22 @@ public class Player : MonoBehaviour
     {
         switch (list)
         {
-            case CharmList.Level1: return Level1;
-            case CharmList.Level2: return Level2;
-            case CharmList.Level3: return Level3;
-            case CharmList.Level4: return Level4;
-            case CharmList.Level5: return Level5;
-            case CharmList.Level6: return Level6;
-            case CharmList.Level7: return Level7;
-            case CharmList.Level8: return Level8;
-            case CharmList.Level9: return Level9;
-            case CharmList.Level10: return Level10;
-            case CharmList.Level11: return Level11;
-            case CharmList.Level12: return Level12;
-            case CharmList.Level13: return Level13;
-            case CharmList.Level14: return Level14;
-            case CharmList.Level15: return Level15;
-            case CharmList.Level16: return Level16;
+            case CharmList.Level1: return (Charm[])Level1.Clone();
+            case CharmList.Level2: return (Charm[])Level2.Clone();
+            case CharmList.Level3: return (Charm[])Level3.Clone();
+            case CharmList.Level4: return (Charm[])Level4.Clone();
+            case CharmList.Level5: return (Charm[])Level5.Clone();
+            case CharmList.Level6: return (Charm[])Level6.Clone();
+            case CharmList.Level7: return (Charm[])Level7.Clone();
+            case CharmList.Level8: return (Charm[])Level8.Clone();
+            case CharmList.Level9: return (Charm[])Level9.Clone();
+            case CharmList.Level10: return (Charm[])Level10.Clone();
+            case CharmList.Level11: return (Charm[])Level11.Clone();
+            case CharmList.Level12: return (Charm[])Level12.Clone();
+            case CharmList.Level13: return (Charm[])Level13.Clone();
+            case CharmList.Level14: return (Charm[])Level14.Clone();
+            case CharmList.Level15: return (Charm[])Level15.Clone();
+            case CharmList.Level16: return (Charm[])Level16.Clone();
             default: return null;
         }
     }
