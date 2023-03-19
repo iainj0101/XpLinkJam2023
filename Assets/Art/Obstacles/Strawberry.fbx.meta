@@ -3,7 +3,12 @@ guid: a01812683fd7d254cbce4c340176f3c9
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Strawberry_MAT
+    second: {fileID: 2100000, guid: 6a8d432aba1615143b7ff4d9589ad560, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

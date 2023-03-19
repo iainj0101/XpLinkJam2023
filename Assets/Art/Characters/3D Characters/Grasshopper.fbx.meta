@@ -3,7 +3,12 @@ guid: 40cd0f0ca90a9df40b8858f2d480f4a2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grasshopper_MAT
+    second: {fileID: 2100000, guid: c8d533fb6e6f56c43b8a2edf32f0654d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
