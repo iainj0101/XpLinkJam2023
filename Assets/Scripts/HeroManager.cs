@@ -31,8 +31,10 @@ public class HeroManager : GameEventListener
     [SerializeField] GameObject HopperPrefab;
     [SerializeField] GameObject CaterpillarPrefab;
 
+    public bool canrestart = false;
     public void StartGame(Charm[] UsedBugs)
     {
+        canrestart = true;
         ResetButton.SetActive(true);
         Bugs.Clear();
         foreach (Charm b in UsedBugs)
@@ -151,6 +153,11 @@ public class HeroManager : GameEventListener
         if (Input.GetKeyDown(KeyCode.Space) && Bugs.Count > 1)
         {
             NextBug(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && canrestart)
+        {
+            LevelReset();
         }
 
     }

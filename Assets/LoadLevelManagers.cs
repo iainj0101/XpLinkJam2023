@@ -23,6 +23,7 @@ public class LoadLevelManagers : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(90, 0, 0);
 
         Hero.GetComponent<HeroManager>().ResetButton.SetActive(false);
+        Hero.GetComponent<HeroManager>().canrestart = false; ;
         Destroy(Hero.GetComponent<HeroManager>().BugInstance);
         Destroy(CurrentLevel);
         CurrentLevel = Instantiate(nextLevel, this.transform);
