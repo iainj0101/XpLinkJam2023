@@ -329,7 +329,7 @@ public class HeroManager : GameEventListener
                         else
                         {
                             //die
-                            if (Bugs.Count !> 1) { StartCoroutine(Die()); }
+                      
                         }
                     }
                 }
