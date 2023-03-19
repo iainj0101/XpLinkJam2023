@@ -2978,6 +2978,10 @@ MonoBehaviour:
   MoveFoward: {fileID: 0}
   TurnRight: {fileID: 7487077279468540435}
   TurnLeft: {fileID: 6121508764317457438}
+  CatiNorth: {fileID: 0}
+  CatiEast: {fileID: 0}
+  CatiSouth: {fileID: 0}
+  CatiWest: {fileID: 0}
   Land: {fileID: 0}
   CatiPrevMove: -1
   CatiIndex: 0
@@ -3072,8 +3076,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 3
-  outlineColor: {r: 0.55718094, g: 0.745283, b: 0.25077128, a: 1}
-  outlineWidth: 10
+  outlineColor: {r: 0.22630163, g: 0.2830189, b: 0.1265575, a: 1}
+  outlineWidth: 8
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
