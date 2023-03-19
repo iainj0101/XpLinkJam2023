@@ -6,6 +6,10 @@ using MoreMountains.Feedbacks;
 public class Froggy : GameEventListener
 {
     public int Length;
+    public bool startOut = false;
+    public Tile TileOn;
+    public Direction MyDirection;
+    public LevelManager lm;
     public enum FrogType
     {
         Green, Blue
@@ -41,6 +45,11 @@ public class Froggy : GameEventListener
             case (FrogType.Blue):
                 Maxindex = BlueFrog.Length;
                 break;
+        }
+        TileOn = this.transform.parent.GetComponent<Tile>();
+        if (startOut)
+        {
+            StartCoroutine(Out());
         }
     }
     public override void OnEventRaised(GameEvent source)
@@ -79,7 +88,22 @@ public class Froggy : GameEventListener
 
     public void CheckKill()
     {
-
+        Tile last = TileOn;
+        for(int i = 0; i < Length; i++)
+        {
+            last.GetTiles();
+            foreach (KeyValuePair<Direction,Tile> t in last.Tiles)
+            {
+                if (t.Key == MyDirection)
+                {
+                    if (lm.Hero.GetComponent<HeroManager>().CurrentTile == t.Value)
+                    {
+                        lm.Hero.GetComponent<HeroManager>().DeathTime();
+                    }
+                    last = t.Value;
+                }
+            }
+        }
     }
 
     IEnumerator Out()

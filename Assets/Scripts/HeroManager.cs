@@ -170,6 +170,11 @@ public class HeroManager : GameEventListener
             //die
         }
     }
+    public void DeathTime()
+    {
+        StartCoroutine(Die());
+    }
+
     IEnumerator Die()
     {
         if (BugInstance != null)
@@ -489,7 +494,7 @@ public class HeroManager : GameEventListener
 
         //next bug
 
-        if (actions.Count == 0 && Bugs.Count <= 1)
+        if (actions.Count == 0 && Bugs.Count <= 1 && CurrentTile.gameObject.GetComponent<EndTile>() == null)
         {
             StartCoroutine(Die());
         }
